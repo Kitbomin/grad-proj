@@ -1,0 +1,12 @@
+# Java
+build/
+.gradle/
+out/
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+
+# OS
+.DS_Store
