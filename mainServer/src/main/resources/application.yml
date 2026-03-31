@@ -6,6 +6,13 @@ ai:
     url: "http://localhost:8000"
 
 spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB      # 회의 파일용 넉넉한 용량
+      max-request-size: 100MB
+  mustache:
+    servlet:
+      expose-request-attributes: true
   h2:
     console:
       enabled: true

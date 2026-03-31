@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분석 결과 - AI 회의록 시스템</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f7f9; color: #333; }
+        .main-container { max-width: 850px; margin: 60px auto; }
+        .result-card {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+            overflow: hidden;
+        }
+        .card-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eee;
+            padding: 20px 30px;
+        }
+        .transcript-content {
+            padding: 30px;
+            min-height: 200px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #444;
+            /* 텍스트 덩어리의 줄바꿈과 띄어쓰기를 보존합니다 */
+            white-space: pre-wrap; 
+            word-wrap: break-word;
+        }
+        .btn-home { border-radius: 8px; padding: 10px 25px; }
+    </style>
+</head>
+<body>
+
+<div class="container main-container">
+    <div class="result-card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="mb-0 fw-bold text-primary">🎙️ 회의 음성 전사 결과</h4>
+            <span class="badge bg-primary px-3 py-2">AI 분석 완료</span>
+        </div>
+
+        <div class="card-body">
+            <div class="transcript-content">
+                {{#transcript}}
+                    {{.}}
+                {{/transcript}}
+                {{^transcript}}
+                    <div class="text-center py-5">
+                        <p class="text-muted">텍스트를 추출하지 못했습니다. 다시 시도해주세요.</p>
+                    </div>
+                {{/transcript}}
+            </div>
+        </div>
+
+        <div class="card-footer bg-white border-top-0 p-4 text-end">
+            <p class="text-muted small mb-3">※ 이 내용은 Whisper AI 모델에 의해 자동으로 생성되었습니다.</p>
+            <a href="/" class="btn btn-outline-secondary btn-home me-2">다시 업로드</a>
+            <button class="btn btn-primary btn-home" onclick="window.print()">PDF로 저장</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
